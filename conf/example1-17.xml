@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- ======================================
+     = Example 1-17                       =
+     ====================================== -->
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/' debug="true">
+   
+  <!-- Configure the WorkUnit class' Renderer -->
+  <renderer 
+    renderedClass="com.makotogroup.log4j.WorkUnit"
+    renderingClass="com.makotogroup.log4j.WorkUnit$RequestRenderer"/>
+
+  <!-- Appender - Console Appender, call it Console -->
+  <appender name="Console" class="org.apache.log4j.ConsoleAppender">
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%c [%t] %-5p |%X{request.id} %X{user.id} %X{user.name}| => %m%n"/>
+    </layout>
+  </appender>
+
+  <!-- Appender - File Appender, call it File -->
+  <appender name="File" class="org.apache.log4j.FileAppender">
+    <param name="File" value="output.log"/>
+    <param name="Append" value="false"/> <!-- Recreate file between runs -->
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%c [%t] %-5p |%X{request.id} %X{user.id} %X{user.name}| => %m%n"/>
+    </layout>
+    <filter class="org.apache.log4j.varia.StringMatchFilter">
+      <param name="StringToMatch" value="user.name=Billy"/>
+    </filter>
+    <filter class="com.makotogroup.log4j.WithContextStringMatchFilter">
+      <param name="ContextPropertyToMatch" value="user.name"/>
+      <param name="ContextPropertyValueToMatch" value="Billy"/>
+    </filter>
+    <filter class="org.apache.log4j.varia.DenyAllFilter"/>
+  </appender>
+  
+
+  <!-- Set the logger Level for com.makotogroup to DEBUG -->
+  <logger name="com.makotogroup">
+    <level value="ALL"/>
+  </logger>
+
+  <!-- Configure the Root Logger --> 
+  <root>
+    <level value="WARN"/>
+    <appender-ref ref="Console"/>
+    <appender-ref ref="File"/>
+  </root>
+</log4j:configuration>

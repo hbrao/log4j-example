@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<makoto:application xmlns:makoto="http://makoto.com/log4j" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://makoto.com/log4j mbeanFacade.xsd ">
+  <makoto:mbean className="">
+    <makoto:description/>
+    <makoto:attribute name=""/>
+  </makoto:mbean>
+</makoto:application>

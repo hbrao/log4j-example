@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE application SYSTEM "mbean.dtd">
+<application>
+	<!--========================-->
+	<!-- Queue MBean definition -->
+	<!--========================-->
+	
+	<mbean className="Queue">
+		<description>This MBean is a managed queue to which one or more supplier threads is adding items (objects) and one or more consumer threads is removing them.</description>
+		
+		<!-- ********** -->
+		<!-- Attributes -->
+		<!-- ********** -->
+		<attribute name="CurrentLogLevel">The current logger level.</attribute>
+		<attribute name="NumberOfItemsProcessed">The number of items that have been removed from the queue.</attribute>		
+		<attribute name="PutWaitTime">The total amount of time (in milliseconds) supplier threads have waited to add items to the queue because it was full.</attribute>
+		<attribute name="QueueSize">The maximum number of items that may coexist in the queue at any one instant. Also referred to as the queue depth.</attribute>
+		<attribute name="TakeWaitTime">The total amount of time (in milliseconds) consumer threads have waited to remove items from the queue because it was empty.</attribute>		
+		
+		<!-- ********** -->
+		<!-- Operations -->
+		<!-- ********** -->
+		<operation name="setLoggerLevel">
+			<description>Dynamically alter the current logger level to the specified level.</description>
+			<parameter name="newLevel" type="string">The new level value</parameter>
+		</operation>	
+		<operation name="logError">
+			<description>Logs an error message whose origin is the operator at the console</description>
+			<parameter name="message" type="string">The message to be logged as an error</parameter>
+		</operation>	
+	</mbean>
+	
+	<!--=============================-->
+	<!-- Controller MBean definition -->
+	<!--=============================-->
+	
+	<mbean className="Controller">
+		<description>This MBean is the controller for the application."</description>
+		<!-- ********** -->
+		<!-- Attributes -->
+		<!-- ********** -->
+		<attribute name="CurrentLogLevel">The current logger level.</attribute>
+		<attribute name="NumberOfResets">The number of times reset has been invoked on this MBean.</attribute>
+		<!-- ********** -->
+		<!-- Operations -->
+		<!-- ********** -->
+		<operation name="createWorker">
+			<description>Creates a new worker thread.</description>
+			<parameter name="workerType" type="string">The type of worker thread to create (Consumer or Supplier)</parameter>
+			<parameter name="workFactor" type="integer">The work factor for the new worker thread</parameter>
+		</operation>
+		<operation name="setLoggerLevel">
+			<description>Dynamically alter the current logger level to the specified level.</description>
+			<parameter name="newLevel" type="string">The new level value</parameter>
+		</operation>	
+		<operation name="logError">
+			<description>Logs an error message whose origin is the operator at the console</description>
+			<parameter name="message" type="string">The message to be logged as an error</parameter>
+		</operation>	
+	</mbean>
+	
+	<!--===========================-->
+	<!-- Consumer MBean definition -->
+	<!--===========================-->
+	
+	<mbean className="Consumer">
+		<description>This MBean is a consumer of items from the Queue.</description>
+		<!-- ********** -->
+		<!-- Attributes -->
+		<!-- ********** -->
+		<attribute name="CurrentLogLevel">The current logger level.</attribute>
+		<attribute name="WorkFactor">The amount of work performed by this worker thread.</attribute>
+		<attribute name="AverageUnitProcessingTime">The average time in milliseconds to process each item</attribute>
+		<attribute name="NumberOfUnitsProcessed">The total number of items processed.</attribute>
+		<attribute name="Suspended">Indicates whether or not this worker is suspended.</attribute>
+		<attribute name="NumberOfResets">The number of times reset has been invoked on this MBean.</attribute>
+		<!-- ********** -->
+		<!-- Operations -->
+		<!-- ********** -->
+		<operation name="reset">
+			<description>Resets the state of this MBean.</description>
+		</operation>
+		<operation name="resume">
+			<description>Resumes this worker thread.</description>
+		</operation>
+		<operation name="stop">
+			<description>Stops this worker thread.</description>
+		</operation>
+		<operation name="suspend">
+			<description>Suspends this worker thread.</description>
+		</operation>
+		<operation name="setLoggerLevel">
+			<description>Dynamically alter the current logger level to the specified level.</description>
+			<parameter name="newLevel" type="string">The new level value</parameter>
+		</operation>	
+		<operation name="logError">
+			<description>Logs an error message whose origin is the operator at the console</description>
+			<parameter name="message" type="string">The message to be logged as an error</parameter>
+		</operation>	
+	</mbean>
+	
+	<!--===========================-->
+	<!-- Supplier MBean definition -->
+	<!--===========================-->
+	
+	<mbean className="Supplier">
+		<description>This MBean is a supplier of items to the Queue.</description>
+		<!-- ********** -->
+		<!-- Attributes -->
+		<!-- ********** -->
+		<attribute name="AverageUnitProcessingTime">The average time in milliseconds to process each item</attribute>
+		<attribute name="CurrentLogLevel">The current logger level.</attribute>
+		<attribute name="NumberOfResets">The number of times reset has been invoked on this MBean.</attribute>
+		<attribute name="NumberOfUnitsProcessed">The total number of items processed.</attribute>
+		<attribute name="Suspended">Indicates whether or not this worker is suspended.</attribute>
+		<attribute name="WorkFactor">The amount of work performed by this worker thread.</attribute>
+		<!-- ********** -->
+		<!-- Operations -->
+		<!-- ********** -->
+		<operation name="reset">
+			<description>Resets the state of this MBean.</description>
+		</operation>
+		<operation name="resume">
+			<description>Resumes this worker thread.</description>
+		</operation>
+		<operation name="stop">
+			<description>Stops this worker thread.</description>
+		</operation>
+		<operation name="suspend">
+			<description>Suspends this worker thread.</description>
+		</operation>
+		<operation name="setLoggerLevel">
+			<description>Dynamically alter the current logger level to the specified level.</description>
+			<parameter name="newLevel" type="string">The new level value</parameter>
+		</operation>
+		<operation name="logError">
+			<description>Logs an error message whose origin is the operator at the console</description>
+			<parameter name="message" type="string">The message to be logged as an error</parameter>
+		</operation>	
+	</mbean>
+
+</application>

@@ -1,0 +1,61 @@
+<schema
+  xmlns='http://www.w3.org/2000/10/XMLSchema'
+  targetNamespace='http://makoto.com/log4j'
+  xmlns:makoto='http://makoto.com/log4j'>
+
+ <element name='application'>
+  <complexType>
+   <sequence>
+    <element ref='makoto:mbean' maxOccurs='unbounded'/>
+   </sequence>
+  </complexType>
+ </element>
+
+ <element name='mbean'>
+  <complexType>
+   <sequence>
+    <element ref='makoto:description' minOccurs='0' maxOccurs='1'/>
+    <choice maxOccurs='unbounded'>
+     <element ref='makoto:attribute'/>
+     <element ref='makoto:operation'/>
+     <element ref='makoto:notification'/>
+    </choice>
+   </sequence>
+   <attribute name='className' type='string' use='required'/>
+  </complexType>
+ </element>
+
+ <element name='description'>
+  <complexType mixed='true'>
+  </complexType>
+ </element>
+
+ <element name='attribute'>
+  <complexType mixed='true'>
+   <attribute name='name' type='string' use='required'/>
+  </complexType>
+ </element>
+
+ <element name='operation'>
+  <complexType>
+   <sequence>
+    <element ref='makoto:description' minOccurs='0' maxOccurs='1'/>
+    <element ref='makoto:parameter' minOccurs='0' maxOccurs='unbounded'/>
+   </sequence>
+   <attribute name='name' type='string' use='required'/>
+  </complexType>
+ </element>
+
+ <element name='parameter'>
+  <complexType mixed='true'>
+   <attribute name='name' type='string' use='required'/>
+   <attribute name='type' type='string' use='required'/>
+  </complexType>
+ </element>
+
+ <element name='notification'>
+  <complexType mixed='true'>
+   <attribute name='type' type='string' use='required'/>
+  </complexType>
+ </element>
+</schema>

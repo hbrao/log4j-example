@@ -1,0 +1,25 @@
+<component name="libraryTable">
+  <library name="libs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/activation.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/c3p0-0.9.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-collections-3.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-lang-2.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/dom4j-1.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/ehcache-1.2.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hibernate3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jmxtools.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/joda-time-1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jta.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/log4j-1.2.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/mailapi.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-5.0.5-bin.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/smtp.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/jakarta-log4j-1.2.15-src.jar!/" />
+    </SOURCES>
+  </library>
+</component>

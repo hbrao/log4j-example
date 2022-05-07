@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.makotogroup.log4j.db.MappedDiagnosticContext" table="mapped_diagnostic_context" lazy="false">
+	
+	  <id name="id" column="id" type="java.lang.Integer">
+		  <generator class="native">
+		  </generator>
+	  </id>
+	  
+	<property name="propertyName" type="java.lang.String" column="property_name"/>
+	<property name="propertyValue" type="java.lang.String" column="property_value"/>
+
+    <many-to-one name="message" class="com.makotogroup.log4j.db.MappedDiagnosticContext" column="message_id"/>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- ======================================
+     = Example 1-6                        =
+     ====================================== -->
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'
+   debug="true" 
+   threshold="info">
+   
+  <!-- Configure the Queue class' Renderer -->
+  <renderer 
+    renderedClass="com.makotogroup.log4j.Queue"
+    renderingClass="com.makotogroup.log4j.Queue$QueueRenderer"/>
+  
+  <!-- Appender - Console Appender, call it Console -->
+    <appender name="Console"
+            class="org.apache.log4j.ConsoleAppender">
+    <!-- Use PatternLayout -->
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" 
+             value="%c {%l}:%n    [%t] %-5p - %m%n"/>
+    </layout>
+  </appender>
+
+  <appender name="RollingFile" 
+            class="org.apache.log4j.RollingFileAppender">
+    <param name="File" value="log4j.log"/>
+    <param name="MaxFileSize" value="1000000"/>
+    <!-- Use PatternLayout -->
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" 
+             value="%c {%l}:%n    [%t] %-5p - %m%n"/>
+    </layout>
+  </appender>
+
+  <appender name="FileForErrors" 
+            class="org.apache.log4j.FileAppender">
+    <errorHandler class="org.apache.log4j.varia.FallbackErrorHandler">
+      <appender-ref ref="FallbackFileForErrors"/>
+    </errorHandler>
+    <param name="File" value="errors.log"/>
+    <!-- Use PatternLayout -->
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" 
+             value="%c {%l}:%n    [%t] %-5p - %m%n"/>
+    </layout>
+    <filter class="org.apache.log4j.varia.StringMatchFilter">
+      <param name="StringToMatch" value="error"/>
+    </filter>
+  </appender>
+
+  <appender name="FallbackFileForErrors" 
+            class="org.apache.log4j.FileAppender">
+    <param name="File" value="fallback.log"/>
+    <!-- Use PatternLayout -->
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" 
+             value="%c {%l}:%n    [%t] %-5p - %m%n"/>
+    </layout>
+  </appender>
+
+  <!-- Explicitly set some logger threshold values -->
+  <logger name="com.makotogroup">
+    <level value="WARN"/>
+    <appender-ref ref="RollingFile"/>
+  </logger>
+
+  <logger name="com.makotogroup.log4j.Controller">
+    <level value="DEBUG"/>
+  </logger>
+
+  <!-- Configure the Root Logger --> 
+  <root>
+    <level value="WARN"/>
+    <appender-ref ref="Console"/>
+    <appender-ref ref="FileForErrors"/>
+  </root>
+</log4j:configuration>

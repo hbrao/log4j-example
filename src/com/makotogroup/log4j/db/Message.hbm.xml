@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 2.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.makotogroup.log4j.db.Message" table="message" lazy="false">
+	
+	  <id name="id" column="id" type="java.lang.Integer">
+		  <generator class="native">
+		  </generator>
+	  </id>
+	  
+	<property name="threadName" type="java.lang.String" column="thread_name"/>
+	<property name="loggerName" type="java.lang.String" column="logger_name"/>
+	<property name="levelName" type="java.lang.String" column="level_name"/>
+	<property name="message" type="java.lang.String" column="message"/>
+    <property name="whenLogged" type="java.util.Date" column="when_logged"/>
+
+    <set name="mdc" cascade="all-delete-orphan" lazy="false">
+      <key column="message_id"/>
+      <one-to-many class="com.makotogroup.log4j.db.MappedDiagnosticContext"/>
+    </set>
+
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost/log4j</property>
+
+        <property name="hibernate.c3p0.max_size">50</property>
+        <property name="hibernate.c3p0.min_size">1</property>
+        <property name="hibernate.c3p0.initial_pool_size">1</property>
+        <property name="hibernate.c3p0.min_pool_size">1</property>
+        <property name="hibernate.c3p0.max_pool_size">50</property>
+        <property name="hibernate.c3p0.timeout">60</property>
+        <property name="hibernate.c3p0.max_statements">100</property>
+
+        <!-- JDBC connection pool (use the built-in) 
+        <property name="connection.pool_size">1</property> -->
+        
+        <!-- SQL dialect -->
+<!--        <property name="dialect">org.hibernate.dialect.MySQLMyISAMDialect</property> -->
+        <property name="dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
+
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+				
+        <!-- Disable the second-level cache -->
+        <property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
+
+        <mapping resource="com/makotogroup/log4j/db/Message.hbm.xml"/>
+        <mapping resource="com/makotogroup/log4j/db/MappedDiagnosticContext.hbm.xml"/>
+        
+    </session-factory>
+
+</hibernate-configuration>

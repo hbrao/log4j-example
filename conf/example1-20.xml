@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- ======================================
+     = Example 1-19                       =
+     ====================================== -->
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/' debug="true">
+  <!-- Appender - Console Appender, call it Console -->
+  <appender name="Console" class="org.apache.log4j.ConsoleAppender">
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%c [%t] %-5p |%X{request.id} %X{user.id} %X{user.name}| => %m%n"/>
+    </layout>
+  </appender>
+  
+  <appender name="ImportantEventSmtpAppender" class="org.apache.log4j.net.SMTPAppender">
+    <param name="EvaluatorClass" value="com.makotogroup.log4j.AcceptAllTriggeringEventEvaluator"/>
+  	<param name="SMTPHost" value="${smtp.host}"/>
+  	<param name="SMTPUsername" value="${smtp.username}"/>
+  	<param name="SMTPPassword" value="${smtp.password}"/>
+  	<param name="To" value="${smtp.to}"/>
+  	<param name="From" value="${smtp.from}"/>
+  	<layout class="org.apache.log4j.HTMLLayout"/>
+  	<filter class="org.apache.log4j.varia.StringMatchFilter">
+  	  <param name="StringToMatch" value="APPLICATION STARTING AT"/>
+  	</filter>
+  	<filter class="org.apache.log4j.varia.DenyAllFilter"/>
+  </appender>
+  
+  <!-- Set the logger Level for com.makotogroup to DEBUG -->
+  <logger name="com.makotogroup">
+    <level value="ALL"/>
+    <appender-ref ref="ImportantEventSmtpAppender"/>
+  </logger>
+
+  <!-- Configure the Root Logger --> 
+  <root>
+    <level value="WARN"/>
+    <appender-ref ref="Console"/>
+  </root>
+</log4j:configuration>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- ======================================
+     = Example 1-9                        =
+     ====================================== -->
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/' debug="true">
+   
+  <!-- Use an ObjectRenderer for Queue -->
+  <renderer renderedClass="com.makotogroup.log4j.Queue" renderingClass="com.makotogroup.log4j.Queue$QueueRenderer"/>
+  
+  <!-- Appender - Console Appender, call it Console -->
+  <appender name="Console" class="org.apache.log4j.ConsoleAppender">
+    <layout class="org.apache.log4j.SimpleLayout"/>
+  </appender>
+
+  <appender name="FileAppender" class="org.apache.log4j.FileAppender">
+    <param name="File" value="makoto.log.html"/>
+    <param name="Append" value="false"/>
+    <layout class="org.apache.log4j.HTMLLayout">
+      <param name="LocationInfo" value="true"/>
+      <param name="Title" value="Log output from the com.makotogroup Logger"/>
+    </layout>
+  </appender>
+
+  <!-- Explicitly set some logger threshold values -->
+  <logger name="com.makotogroup">
+    <level value="INFO"/>
+    <appender-ref ref="FileAppender"/>
+  </logger>
+
+  <!-- Configure the Root Logger --> 
+  <root>
+    <level value="WARN"/>
+    <appender-ref ref="Console"/>
+  </root>
+</log4j:configuration>

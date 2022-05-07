@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- ======================================
+     = Example 1-19                       =
+     ====================================== -->
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/' debug="true">
+  <!-- Appender - Console Appender, call it Console -->
+  <appender name="Console" class="org.apache.log4j.ConsoleAppender">
+    <layout class="org.apache.log4j.SimpleLayout">
+    </layout>
+  </appender>
+  
+  <appender name="HibernateAppender" class="org.apache.log4j.FileAppender">
+    <param name="File" value="hibernate.log"/>
+  	<layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%c {%l}:%n    [%t] %-5p - %m%n"/>
+    </layout>
+  </appender>
+  
+  <logger name="org.hibernate" additivity="false">
+    <level value="DEBUG"/>
+    <appender-ref ref="HibernateAppender"/>
+  </logger>
+
+  <!-- Configure the Root Logger --> 
+  <root>
+    <level value="WARN"/>
+    <appender-ref ref="Console"/>
+  </root>
+</log4j:configuration>

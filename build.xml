@@ -1,0 +1,490 @@
+<!--===========================================================-->
+<!-- build.xml - Ant build file for the producer/consumer      -->
+<!--             application for all implementations.          -->
+<!--===========================================================-->
+
+<project name="log4j-example" basedir="." default="all">
+
+  <!--=========================================================-->
+  <!-- Set global properties                                   -->
+  <!--=========================================================-->
+  <property name="src.dir" value="${basedir}/src"/>
+  <property name="target.dir" value="${basedir}/out/production"/>
+  <property name="target.classes.dir" value="${target.dir}/log4j-example"/>
+  <property name="lib.dir" value="${basedir}/lib"/>
+  <property name="conf.dir" value="${basedir}/conf"/>
+	
+  <!--=========================================================-->
+  <!-- Set some general path information that will be used     -->
+  <!-- repeatedly in this build file. This information will be -->
+  <!-- referenced by the id attribute.                         -->
+  <!--=========================================================-->
+  <path id="compile.class.path">
+  	<fileset dir="${lib.dir}">
+  		<include name="*.jar"/>
+  	</fileset>
+  </path>
+
+  <!--=========================================================-->
+  <!-- TARGET: all                                             -->
+  <!--=========================================================-->
+  <target name="all" depends="example1-1"/>
+  
+  <!--=========================================================-->
+  <!-- TARGET: init                                            -->
+  <!--=========================================================-->
+  <target name="init">
+    <!--=======================================================-->
+    <!-- create the time stamp                                 -->
+    <!--=======================================================-->
+    <tstamp>
+      <format property="build.start.time" pattern="MM/dd/yyyy hh:mm:ss aa"/>
+    </tstamp>
+    <echo message="Build started at ${build.start.time}..."/>
+    <mkdir dir="${target.dir}"/>
+    <mkdir dir="${target.classes.dir}"/>
+  </target>
+
+  <!--=========================================================-->
+  <!-- TARGET: example1-1                                      -->
+  <!--=========================================================-->
+  <target name="example1-1" depends="clean, init">
+  	<antcall target="build-example">
+      <param name="example-number" value="1-1"/>
+      <param name="example-style" value="properties"/>
+  	</antcall>
+  </target>
+	
+  <!--=========================================================-->
+  <!-- TARGET: example1-1-xml                                  -->
+  <!--=========================================================-->
+  <target name="example1-1-xml" depends="clean, init">
+  	<antcall target="build-example">
+      <param name="example-number" value="1-1"/>
+      <param name="example-style" value="xml"/>
+  	</antcall>
+  </target>
+	
+  <!--=========================================================-->
+  <!-- TARGET: example1-2                                      -->
+  <!--=========================================================-->
+  <target name="example1-2" depends="clean, init">
+  	<antcall target="build-example">
+      <param name="example-number" value="1-2"/>
+      <param name="example-style" value="properties"/>
+  	</antcall>
+  </target>
+	
+  <!--=========================================================-->
+  <!-- TARGET: example1-2-xml                                  -->
+  <!--=========================================================-->
+  <target name="example1-2-xml" depends="clean, init">
+  	<antcall target="build-example">
+      <param name="example-number" value="1-2"/>
+      <param name="example-style" value="xml"/>
+  	</antcall>
+  </target>
+	
+  <!--=========================================================-->
+  <!-- TARGET: example1-3                                      -->
+  <!--=========================================================-->
+  <target name="example1-3" depends="clean, init">
+  	<antcall target="build-example">
+      <param name="example-number" value="1-3"/>
+      <param name="example-style" value="properties"/>
+  	</antcall>
+  </target>
+	
+  <!--=========================================================-->
+  <!-- TARGET: example1-3-xml                                  -->
+  <!--=========================================================-->
+  <target name="example1-3-xml" depends="clean, init">
+  	<antcall target="build-example">
+      <param name="example-number" value="1-3"/>
+      <param name="example-style" value="xml"/>
+  	</antcall>
+  </target>
+	
+  <!--=========================================================-->
+  <!-- TARGET: example1-4                                      -->
+  <!--=========================================================-->
+  <target name="example1-4" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="1-4"/>
+      <param name="example-style" value="properties"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-4-xml                                  -->
+  <!--=========================================================-->
+  <target name="example1-4-xml" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="1-4"/>
+      <param name="example-style" value="xml"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-5                                      -->
+  <!--=========================================================-->
+  <target name="example1-5" depends="clean, init">
+    <property name="debug" value="true"/>
+    <antcall target="build-example">
+	  <param name="example-number" value="1-5"/>
+      <param name="example-style" value="properties"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-5-xml                                  -->
+  <!--=========================================================-->
+  <target name="example1-5-xml" depends="clean, init">
+    <property name="debug" value="true"/>
+    <antcall target="build-example">
+	  <param name="example-number" value="1-5"/>
+      <param name="example-style" value="xml"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-6                                      -->
+  <!--=========================================================-->
+  <target name="example1-6" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="1-6"/>
+      <param name="example-style" value="xml"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-7                                      -->
+  <!--=========================================================-->
+  <target name="example1-7" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="1-7"/>
+      <param name="example-style" value="properties"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-7-xml                                  -->
+  <!--=========================================================-->
+  <target name="example1-7-xml" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="1-7"/>
+      <param name="example-style" value="xml"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-8                                      -->
+  <!--=========================================================-->
+  <target name="example1-8" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="1-8"/>
+      <param name="example-style" value="properties"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-8-xml                                  -->
+  <!--=========================================================-->
+  <target name="example1-8-xml" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="1-8"/>
+      <param name="example-style" value="xml"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-9                                      -->
+  <!--=========================================================-->
+  <target name="example1-9" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="1-9"/>
+      <param name="example-style" value="properties"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-9-xml                                  -->
+  <!--=========================================================-->
+  <target name="example1-9-xml" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="1-9"/>
+      <param name="example-style" value="xml"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-10                                     -->
+  <!--=========================================================-->
+  <target name="example1-10" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="1-10"/>
+      <param name="example-style" value="properties"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-10-xml                                 -->
+  <!--=========================================================-->
+  <target name="example1-10-xml" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="1-10"/>
+      <param name="example-style" value="xml"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-11                                     -->
+  <!--=========================================================-->
+  <target name="example1-11" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="1-11"/>
+      <param name="example-style" value="properties"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-11-xml                                 -->
+  <!--=========================================================-->
+  <target name="example1-11-xml" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="1-11"/>
+      <param name="example-style" value="xml"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-12                                     -->
+  <!--=========================================================-->
+  <target name="example1-12" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="1-12"/>
+      <param name="example-style" value="properties"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-12-xml                                 -->
+  <!--=========================================================-->
+  <target name="example1-12-xml" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="1-12"/>
+      <param name="example-style" value="xml"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-13                                     -->
+  <!--=========================================================-->
+  <target name="example1-13" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="1-13"/>
+      <param name="example-style" value="properties"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-13-xml                                 -->
+  <!--=========================================================-->
+  <target name="example1-13-xml" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="1-13"/>
+      <param name="example-style" value="xml"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-14                                     -->
+  <!--=========================================================-->
+  <target name="example1-14" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="1-14"/>
+      <param name="example-style" value="properties"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-14-xml                                 -->
+  <!--=========================================================-->
+  <target name="example1-14-xml" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="1-14"/>
+      <param name="example-style" value="xml"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-15                                     -->
+  <!--=========================================================-->
+  <target name="example1-15" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="1-15"/>
+      <param name="example-style" value="xml"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-16                                     -->
+  <!--=========================================================-->
+  <target name="example1-16" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="1-16"/>
+      <param name="example-style" value="properties"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-16-xml                                 -->
+  <!--=========================================================-->
+  <target name="example1-16-xml" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="1-16"/>
+      <param name="example-style" value="xml"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-17                                     -->
+  <!--=========================================================-->
+  <target name="example1-17" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="1-17"/>
+      <param name="example-style" value="xml"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-18                                     -->
+  <!--=========================================================-->
+  <target name="example1-18" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="1-18"/>
+      <param name="example-style" value="properties"/>
+	</antcall>
+    <antcall target="copy-hibernate-files">
+	  <param name="example-number" value="1-18"/>
+    </antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-18-xml                                 -->
+  <!--=========================================================-->
+  <target name="example1-18-xml" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="1-18"/>
+      <param name="example-style" value="xml"/>
+	</antcall>
+    <antcall target="copy-hibernate-files">
+	  <param name="example-number" value="1-18"/>
+    </antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-19                                     -->
+  <!--=========================================================-->
+  <target name="example1-19" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="1-19"/>
+      <param name="example-style" value="properties"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-19-xml                                 -->
+  <!--=========================================================-->
+  <target name="example1-19-xml" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="1-19"/>
+      <param name="example-style" value="xml"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: example1-20                                     -->
+  <!--=========================================================-->
+  <target name="example1-20" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="1-20"/>
+      <param name="example-style" value="xml"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: ad-hoc                                          -->
+  <!--=========================================================-->
+  <target name="ad-hoc" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="ad-hoc"/>
+      <param name="example-style" value="properties"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: ad-hoc-xml                                      -->
+  <!--=========================================================-->
+  <target name="ad-hoc-xml" depends="clean, init">
+    <antcall target="build-example">
+	  <param name="example-number" value="ad-hoc"/>
+      <param name="example-style" value="xml"/>
+	</antcall>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: copy-hibernate-files                            -->
+  <!--=========================================================-->
+  <target name="copy-hibernate-files">
+    <copy failonerror="true" file="${conf.dir}/example${example-number}.hibernate.cfg.xml" tofile="${target.classes.dir}/hibernate.cfg.xml"/>
+  	<copy todir="${target.classes.dir}">
+	  <fileset dir="${src.dir}">
+		<include name="**/*.hbm.xml" />
+	  </fileset>
+    </copy>
+  </target>
+  	
+  <!--=========================================================-->
+  <!-- TARGET: build-example                                   -->
+  <!--=========================================================-->
+  <target name="build-example">
+    <javac classpathref="compile.class.path" 
+           destdir="${target.classes.dir}"
+           srcdir="${src.dir}"
+    	     debug="yes">
+      <include name="**/*.java"/>
+    </javac>
+    <copy failonerror="false" file="${conf.dir}/example${example-number}.${example-style}" tofile="${target.classes.dir}/log4j.${example-style}"/>
+    <!-- This copy makes the ad-hoc target work -->
+    <copy failonerror="false" file="${conf.dir}/${example-number}.${example-style}" tofile="${target.classes.dir}/log4j.${example-style}"/>
+  	<copy todir="${target.classes.dir}">
+      <fileset dir="${conf.dir}">
+      	<include name="myapp.xml"/>
+      </fileset>
+    </copy>
+    <copy todir="${basedir}">
+      <fileset dir="${conf.dir}" defaultexcludes="no">
+      	<include name="mbean.dtd"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <!--=========================================================-->
+  <!-- TARGET: clean                                           -->
+  <!--=========================================================-->
+  <target name="clean">
+    <!--=======================================================-->
+    <!-- Remove all derived files from all subdirectories      -->
+    <!-- beginning with ${project.root} and recursing in.      -->
+    <!--=======================================================-->
+    <echo message="Deleting directory ${target.dir} and all its subdirectories..."/>
+    <delete failonerror="false" includeEmptyDirs="true">
+      <fileset dir="${target.dir}" />
+      <fileset dir="${basedir}" defaultexcludes="no">
+      	<include name="mbean.dtd"/>
+      </fileset>
+    </delete>
+  </target>
+
+</project>

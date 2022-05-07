@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration
+  xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+<!-- PASTE IN XML CONFIGURATION SNIPPET HERE -->
+  <appender name="TRFA"
+            class="org.apache.log4j.DailyRollingFileAppender">
+    <param name="File" value="C:\\home\\output.log"/>
+    <param name="Threshold" value="INFO"/>
+    <param name="DatePattern" value=".yyyy-MM-dd-HH"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" 
+             value="%c {%l}:%n    [%t] %-5p - %m%n"/>
+    </layout>
+  </appender>
+  <root>
+    <level value="WARN"/>
+    <appender-ref ref="TRFA"/>
+  </root>
+
+</log4j:configuration>
